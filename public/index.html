@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="theme-color" content="#FFF5E3" />
+    <meta name="description" content="Go Halal App" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <!-- Preload key assets for faster loading -->
+    <link rel="preload" as="image" href="%PUBLIC_URL%/logo512.png" />
+    <link rel="preload" as="audio" href="%PUBLIC_URL%/scan-beep.mp3" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>Go Halal</title>
+    <style>
+      /* Optimized loader to reduce layout shifts */
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+          'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+          sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        background-color: #FFF5E3;
+        overscroll-behavior: none; /* Prevent browser pull-to-refresh */
+      }
+      
+      #initial-loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #FFF5E3;
+        z-index: 9999;
+        transition: opacity 0.5s ease-out;
+      }
+      
+      #initial-loader img {
+        width: 100px;
+        height: 100px;
+        object-fit: contain;
+      }
+      
+      #initial-loader p {
+        margin-top: 20px;
+        font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+        color: #383838;
+      }
+      
+      .loader-spinner {
+        width: 40px;
+        height: 40px;
+        margin-top: 20px;
+        border: 4px solid rgba(250, 231, 194, 0.3);
+        border-radius: 50%;
+        border-top-color: #FAE7C2;
+        animation: spin 1s ease-in-out infinite;
+      }
+      
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    
+    <!-- Initial loading screen -->
+    <div id="initial-loader">
+      <img src="%PUBLIC_URL%/logo512.png" alt="GoHalal Logo" onerror="this.style.display='none'" />
+      <p>Loading GoHalal...</p>
+      <div class="loader-spinner"></div>
+    </div>
+    
+    <div id="root"></div>
+    
+    <script>
+      // Hide loader when app is ready
+      window.addEventListener('load', function() {
+        // Give the app a moment to initialize
+        setTimeout(function() {
+          const loader = document.getElementById('initial-loader');
+          if (loader) {
+            loader.style.opacity = '0';
+            setTimeout(function() {
+              loader.style.display = 'none';
+            }, 500);
+          }
+        }, 500);
+      });
+      
+      // Disable pinch zoom for better PWA experience
+      document.addEventListener('touchmove', function (event) {
+        if (event.scale !== 1) { 
+          event.preventDefault();
+        }
+      }, { passive: false });
+      
+      // Preload audio for scanner
+      const scanSound = new Audio('%PUBLIC_URL%/scan-beep.mp3');
+      scanSound.preload = 'auto';
+    </script>
+  </body>
+</html>

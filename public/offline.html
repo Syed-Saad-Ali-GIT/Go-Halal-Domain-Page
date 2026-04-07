@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Go Halal - Offline</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+    
+    body {
+      background-color: #FFFDF5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      padding: 1rem;
+      text-align: center;
+    }
+    
+    .container {
+      max-width: 400px;
+      width: 100%;
+      padding: 2rem;
+      background-color: #FFFFFF;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    
+    .logo {
+      width: 100px;
+      height: auto;
+      margin-bottom: 1.5rem;
+    }
+    
+    h1 {
+      color: #A98614;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+    
+    p {
+      color: #383838;
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
+    }
+    
+    .button {
+      background-color: #FAE7C2;
+      color: #383838;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 24px;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-block;
+      transition: background-color 0.2s;
+      text-decoration: none;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .button:hover {
+      background-color: #EAD7B7;
+    }
+    
+    .offline-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: #A98614;
+    }
+    
+    .footer {
+      margin-top: 2rem;
+      font-size: 0.8rem;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="offline-icon">📶</div>
+    <h1>You're Offline</h1>
+    <p>It looks like you've lost your internet connection. Some features of Go Halal require an internet connection to work properly.</p>
+    <p>Please check your connection and try again.</p>
+    <a href="/" class="button" id="retry-button">Retry</a>
+    <div class="footer">
+      Go Halal - Your guide to halal food
+    </div>
+  </div>
+  
+  <script>
+    // Add click event to retry button
+    document.getElementById('retry-button').addEventListener('click', function(event) {
+      // If we're online now, let the navigation happen naturally
+      if (navigator.onLine) {
+        return;
+      }
+      
+      // If we're still offline, prevent default and show message
+      event.preventDefault();
+      alert('Still offline. Please check your internet connection and try again.');
+    });
+    
+    // Listen for online event
+    window.addEventListener('online', function() {
+      // Reload the page when connection is restored
+      window.location.reload();
+    });
+  </script>
+</body>
+</html> 

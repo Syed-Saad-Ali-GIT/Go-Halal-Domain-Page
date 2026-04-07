@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoHalal - Product Details</title>
+    <meta name="description" content="Check halal status of products with GoHalal app">
+    
+    <!-- Open Graph Meta Tags for better sharing -->
+    <meta property="og:title" content="GoHalal - Product Details">
+    <meta property="og:description" content="Check halal status of products with GoHalal app">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.gohalal.com.au">
+    <meta property="og:image" content="https://www.gohalal.com.au/logo192.png">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="GoHalal - Product Details">
+    <meta name="twitter:description" content="Check halal status of products with GoHalal app">
+    <meta name="twitter:image" content="https://www.gohalal.com.au/logo192.png">
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #FFF8E7 0%, #F5F5F5 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .container {
+            max-width: 400px;
+            text-align: center;
+            background: white;
+            border-radius: 16px;
+            padding: 40px 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: #4CAF50;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+        
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+        
+        .app-button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .app-button:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+        }
+        
+        .fallback {
+            margin-top: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #4CAF50;
+        }
+        
+        .fallback h3 {
+            margin: 0 0 10px 0;
+            color: #333;
+        }
+        
+        .fallback p {
+            margin: 0;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .loading {
+            display: none;
+            margin-top: 20px;
+        }
+        
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #4CAF50;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">GH</div>
+        <h1>GoHalal</h1>
+        <p class="subtitle">Check halal status of products</p>
+        
+        <div id="loading" class="loading">
+            <div class="spinner"></div>
+            <p>Opening GoHalal app...</p>
+        </div>
+        
+        <div id="app-buttons">
+            <a href="#" id="open-app" class="app-button">Open in GoHalal App</a>
+            <a href="#" id="download-app" class="app-button" style="background: #2196F3;">Download App</a>
+        </div>
+        
+        <div class="fallback">
+            <h3>Don't have the app?</h3>
+            <p>Download GoHalal from the App Store or Google Play to check halal status of products and find halal restaurants near you.</p>
+        </div>
+    </div>
+
+    <script>
+        // Get the product ID from the URL
+        const path = window.location.pathname;
+        const productId = path.split('/product/')[1];
+        
+        // Deep link URLs
+        const appStoreUrl = 'https://apps.apple.com/app/gohalal'; // Replace with actual App Store URL
+        const playStoreUrl = 'https://play.google.com/store/apps/details?id=com.gohalal.app';
+        const appDeepLink = `gohalal://product/${productId}`;
+        const webDeepLink = `https://www.gohalal.com.au/product/${productId}`;
+        
+        // Function to attempt opening the app
+        function openApp() {
+            const loading = document.getElementById('loading');
+            const appButtons = document.getElementById('app-buttons');
+            
+            loading.style.display = 'block';
+            appButtons.style.display = 'none';
+            
+            // Try to open the app
+            const iframe = document.createElement('iframe');
+            iframe.style.display = 'none';
+            iframe.src = appDeepLink;
+            document.body.appendChild(iframe);
+            
+            // Fallback to web deep link after a short delay
+            setTimeout(() => {
+                window.location.href = webDeepLink;
+            }, 2000);
+        }
+        
+        // Function to download the app
+        function downloadApp() {
+            // Detect platform and redirect accordingly
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            
+            if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                window.open(appStoreUrl, '_blank');
+            } else if (/android/i.test(userAgent)) {
+                window.open(playStoreUrl, '_blank');
+            } else {
+                // Default to both stores
+                const choice = confirm('Choose your platform:\nOK for iOS (App Store)\nCancel for Android (Google Play)');
+                if (choice) {
+                    window.open(appStoreUrl, '_blank');
+                } else {
+                    window.open(playStoreUrl, '_blank');
+                }
+            }
+        }
+        
+        // Set up event listeners
+        document.getElementById('open-app').addEventListener('click', function(e) {
+            e.preventDefault();
+            openApp();
+        });
+        
+        document.getElementById('download-app').addEventListener('click', function(e) {
+            e.preventDefault();
+            downloadApp();
+        });
+        
+        // Auto-attempt to open app when page loads (with a small delay)
+        setTimeout(() => {
+            if (productId) {
+                openApp();
+            }
+        }, 1000);
+        
+        // Handle page visibility change (user came back from app)
+        document.addEventListener('visibilitychange', function() {
+            if (!document.hidden) {
+                // User came back, show the buttons again
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('app-buttons').style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+{
+  "short_name": "Go Halal",
+  "name": "Go Halal",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#fffdf5",
+  "background_color": "#ffffff",
+  "id": "go-halal",
+  "description": "Go-Halal helps you find halal products and places to eat across Australia 🌙",
+  "lang": "en",
+  "orientation": "portrait",
+  "categories": [
+    "food",
+    "lifestyle",
+    "productivity",
+    "utilities"
+  ],
+  "iarc_rating_id": "E",
+  "prefer_related_applications": false,
+  "display_override": [
+    "window-controls-overlay",
+    "standalone",
+    "browser"
+  ]
+}
