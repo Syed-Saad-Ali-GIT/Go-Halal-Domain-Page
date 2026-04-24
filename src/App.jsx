@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, useParams } from "react-router-dom";
 
 function Shell({ children }) {
   return (
@@ -131,6 +131,70 @@ function PolicyContent({ src }) {
   );
 }
 
+function ProductDeepLink({ productId }) {
+  const [status, setStatus] = React.useState('trying');
+
+  React.useEffect(() => {
+    window.location.href = `gohalal://product/${productId}`;
+
+    const timer = setTimeout(() => {
+      setStatus('fallback');
+    }, 2500);
+
+    return () => clearTimeout(timer);
+  }, [productId]);
+
+  if (status === 'fallback') {
+    return (
+      <Shell>
+        <div style={{ textAlign: 'center', padding: '40px 16px' }}>
+          <img src="/logo512.png" alt="Go Halal" style={{ width: 80, height: 80, borderRadius: 18, marginBottom: 16 }} />
+          <h2 style={{ fontSize: 20, fontWeight: 700, marginBottom: 8 }}>Get Go Halal</h2>
+          <p style={{ color: '#6B6A6A', marginBottom: 24 }}>
+            Download the app to view this product and discover halal food near you.
+          </p>
+          <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
+            <a href="https://apps.apple.com/app/YOUR_IOS_APP_ID" style={storeBtnStyle('#000')}>
+              📱 Download on the App Store
+            </a>
+            <a href="https://play.google.com/store/apps/details?id=com.gohalalaus.mobile" style={storeBtnStyle('#1A6B3C')}>
+              🤖 Get it on Google Play
+            </a>
+          </div>
+        </div>
+      </Shell>
+    );
+  }
+
+  return (
+    <Shell>
+      <div style={{ textAlign: 'center', padding: '60px 16px' }}>
+        <img src="/logo512.png" alt="Go Halal" style={{ width: 72, height: 72, borderRadius: 16, marginBottom: 16 }} />
+        <h2 style={{ fontSize: 18, fontWeight: 700, marginBottom: 8 }}>Opening in Go Halal…</h2>
+        <p style={{ color: '#6B6A6A', fontSize: 14 }}>
+          If the app doesn't open, you'll be redirected to download it.
+        </p>
+      </div>
+    </Shell>
+  );
+}
+
+function ProductRedirect() {
+  const { id } = useParams();
+  return <ProductDeepLink productId={id} />;
+}
+
+const storeBtnStyle = (bg) => ({
+  display: 'inline-block',
+  background: bg,
+  color: '#fff',
+  padding: '12px 20px',
+  borderRadius: 10,
+  textDecoration: 'none',
+  fontWeight: 600,
+  fontSize: 14,
+});
+
 export default function App() {
   return (
     <Routes>
@@ -141,6 +205,7 @@ export default function App() {
       <Route path="/data-retention-policy" element={<DataRetentionPolicy />} />
       <Route path="/content-submission-guidelines" element={<ContentSubmissionGuidelines />} />
       <Route path="/childrens-privacy-policy" element={<ChildrensPrivacyPolicy />} />
+      <Route path="/product/:id" element={<ProductRedirect />} /> 
       <Route path="*" element={<Home />} />
     </Routes>
   );
