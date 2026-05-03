@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-gh-background text-gh-text antialiased;
+  }
+
+  html.dark body {
+    @apply bg-gh-background-dark text-neutral-100;
+  }
+}
+
+@layer utilities {
+  .gradient-hero {
+    background:
+      radial-gradient(
+        ellipse 80% 60% at 70% 20%,
+        rgba(212, 175, 55, 0.18),
+        transparent 55%
+      ),
+      radial-gradient(
+        ellipse 50% 50% at 20% 80%,
+        rgba(51, 125, 110, 0.12),
+        transparent 45%
+      );
+  }
+
+  html.dark .gradient-hero {
+    background:
+      radial-gradient(
+        ellipse 80% 60% at 70% 20%,
+        rgba(212, 175, 55, 0.12),
+        transparent 55%
+      ),
+      radial-gradient(
+        ellipse 50% 50% at 20% 80%,
+        rgba(51, 125, 110, 0.15),
+        transparent 45%
+      );
+  }
+}
+
+@layer components {
+  .policy-html {
+    @apply text-[15px] leading-relaxed text-gh-text dark:text-neutral-200;
+  }
+
+  .policy-html h1 {
+    @apply mb-4 text-balance text-3xl font-bold tracking-tight text-gh-text-dark dark:text-white;
+  }
+
+  .policy-html h2 {
+    @apply mb-3 mt-10 text-xl font-semibold text-gh-text-dark first:mt-0 dark:text-white;
+  }
+
+  .policy-html h3 {
+    @apply mb-2 mt-6 text-lg font-semibold text-gh-text-dark dark:text-neutral-100;
+  }
+
+  .policy-html h4 {
+    @apply mb-2 mt-4 text-base font-semibold text-gh-text-dark dark:text-neutral-100;
+  }
+
+  .policy-html p {
+    @apply mb-4 text-gh-text-light dark:text-neutral-300;
+  }
+
+  .policy-html ul,
+  .policy-html ol {
+    @apply mb-4 ml-6 text-gh-text-light dark:text-neutral-300;
+  }
+
+  .policy-html ul {
+    @apply list-disc;
+  }
+
+  .policy-html ol {
+    @apply list-decimal;
+  }
+
+  .policy-html li {
+    @apply mb-2 pl-1;
+  }
+
+  .policy-html strong {
+    @apply font-semibold text-gh-text-dark dark:text-neutral-100;
+  }
+
+  .policy-html a {
+    @apply text-gh-tertiary-dark underline decoration-gh-border underline-offset-2 transition hover:text-gh-tertiary dark:text-gh-tertiary-light dark:decoration-gh-surface-dark;
+  }
+
+  .policy-html hr {
+    @apply my-8 border-gh-border dark:border-gh-surface-dark;
+  }
+
+  .policy-html blockquote {
+    @apply my-4 border-l-4 border-gh-primary/60 pl-4 italic text-gh-text-light dark:border-gh-primary/40 dark:text-neutral-400;
+  }
+}

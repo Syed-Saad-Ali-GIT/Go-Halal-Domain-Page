@@ -1,128 +1,65 @@
-# Go-Halal PWA
+<p align="center">
+ <a href="https://web3templates.com/?ref=nextly_github_logo">
+ <img src="https://user-images.githubusercontent.com/1884712/132941531-0fdd7acf-47ca-424e-b77f-1fab2e372a37.png" alt="W3T" width="100" height="41"/>
+ </a> 
+ <br>
+ <br>
+</p>
 
-A Progressive Web App for browsing halal products and restaurants.
+# Nextly - Landing Page Template with Next.js & Tailwind CSS
 
-## Recent Improvements
+Nextly is a free landing page & marketing website template for  startups and indie projects. Its built with Next.js & TailwindCSS.
+And its completely open-source.
+ 
+![image](https://user-images.githubusercontent.com/1884712/121497169-03228680-c990-11eb-975a-e77fddc43de0.png)
 
-We've implemented several key improvements to enhance the mobile user experience:
+## How to use
 
-### 1. Mobile Responsiveness & UI Robustness
-- Added responsive design using viewport units for consistent layout across devices
-- Optimized touch targets for better accessibility (44px minimum size)
-- Fixed layout issues for different screen sizes and orientations
-- Enhanced scrolling performance with GPU acceleration
+Click on the [Use Template](https://github.com/surjithctly/nextly-template/generate) button on this page to clone this respository to your github account. Or you can also clone this respository using terminal or bash. 
 
-### 2. Navigation State Preservation
-- Maintained scroll position and filter state when navigating back from product details
-- Implemented session storage to save and restore search state
-- Improved overall navigation flow for a more native-like experience
+### 1\. Clone this Repository
 
-### 3. Universal Camera Barcode Scanning
-- Implemented a modern barcode scanner using the Web Code API with ZXing fallback
-- Added support for automatic rear camera detection across all devices
-- Created a BarcodeDetector polyfill for cross-browser compatibility
-- Added a manual entry fallback option when camera access is denied
+```bash
+git clone https://github.com/surjithctly/nextly-template.git
+```
 
-### 4. Faster Product Search
-- Optimized search with proper 300ms debouncing to prevent API request flooding
-- Implemented client-side filtering for immediate results
-- Added a caching system for recent searches to reduce server load
-- Added request cancellation to prevent race conditions during rapid typing
+### 2\. Navigate to the directory
 
-## Testing the Improvements
+```
+cd nextly-template
+```
 
-To test these improvements:
+### 3\. Install dependencies
 
-1. **Responsive Design**: Test the app on different devices or use browser dev tools to simulate various screen sizes.
-2. **State Preservation**: Navigate to a product detail and press back - the list should return to the same scroll position.
-3. **Barcode Scanning**: Use the scan feature on any product with a barcode - it should detect quickly (< 500ms).
-4. **Search Performance**: Type in the search box and observe the response time (should be < 300ms).
-
-## Development
-
-### Install Dependencies
 ```
 yarn install
+# or
+npm install
 ```
 
-### Start Development Server
-```
-yarn start
-```
+### 5\. Run Dev Server
 
-### Build for Production
 ```
-yarn build
+yarn dev
+# or
+npm run dev
 ```
 
-# Getting Started with Create React App
+## Deploy with Vercel
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Deploy this template using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
 
-## Available Scripts
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/surjithctly/nextly-template&project-name=nextly-template&repository-name=nextly-template)
 
-In the project directory, you can run:
 
-### `yarn start`
-###  nodemon server.js
+## Author
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Surjith S M ( [@surjithctly](https://surjithctly.in/) )
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `yarn test`
+[![image](https://www.datocms-assets.com/31049/1618983297-powered-by-vercel.svg)](https://vercel.com/?utm_source=web3templates&utm_campaign=oss)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject` 
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
