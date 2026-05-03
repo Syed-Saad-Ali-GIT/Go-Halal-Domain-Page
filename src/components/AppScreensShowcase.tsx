@@ -40,7 +40,7 @@ const RESTAURANT_ITEMS: ScreenshotItem[] = [
 export function AppScreensShowcase() {
   return (
     <>
-      <section id="download" className="scroll-mt-24">
+      <section id="products" className="scroll-mt-24">
         <SectionTitle preTitle="Products" title="Browse, scan, and read labels with ease">
           Search the database, scan a barcode, and open a full product page—halal
           callouts, ingredients, and sources in one place.

@@ -4,7 +4,11 @@ import { site } from "@/lib/site-config";
 
 export function StoreIntro() {
   return (
-    <section aria-labelledby="home-intro-heading">
+    <section
+      id="download"
+      className="scroll-mt-24"
+      aria-labelledby="home-intro-heading"
+    >
       <Container className="flex flex-col items-center pb-10 pt-2 text-center md:pb-12">
         <p className="text-xs font-bold uppercase tracking-[0.2em] text-gh-tertiary dark:text-gh-tertiary-light">
           {site.tagline}
