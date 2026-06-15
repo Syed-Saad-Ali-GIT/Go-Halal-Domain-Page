@@ -6,6 +6,11 @@ export function getProductDeeplink(id: string) {
   return `${appDeeplinkScheme}://product/${safe}`;
 }
 
+export function getRestaurantDeeplink(id: string) {
+  const safe = encodeURIComponent(id);
+  return `${appDeeplinkScheme}://restaurant/${safe}`;
+}
+
 export const site = {
   name: "Go Halal",
   shortDescription:
