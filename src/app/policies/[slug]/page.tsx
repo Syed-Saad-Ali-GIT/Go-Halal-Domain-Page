@@ -37,17 +37,24 @@ export default function PolicyPage({ params }: { params: { slug: string } }) {
   const html = fs.readFileSync(filepath, "utf8");
 
   return (
-    <Container className="max-w-3xl pb-20 pt-8">
+    <Container className="max-w-3xl pb-24 pt-8">
       <nav aria-label="Breadcrumb">
-        <Link
-          href="/"
-          className="text-sm font-medium text-gh-tertiary-dark transition hover:text-gh-tertiary dark:text-gh-tertiary-light dark:hover:text-gh-secondary-light"
-        >
-          ← Back to home
+        <Link href="/" className="pill-link">
+          <svg viewBox="0 0 16 16" aria-hidden="true" className="h-3.5 w-3.5">
+            <path
+              d="M10 3 5 8l5 5"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+          Home
         </Link>
       </nav>
       <article
-        className="policy-html mt-10"
+        className="policy-html surface mt-8 rounded-3xl px-6 py-10 sm:px-12 sm:py-14"
         dangerouslySetInnerHTML={{ __html: html }}
       />
     </Container>
