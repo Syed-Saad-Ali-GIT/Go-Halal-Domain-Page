@@ -9,6 +9,9 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "engines": {
+    "node": "24.x"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/Syed-Saad-Ali-GIT/Go-Halal-Domain-Page"
