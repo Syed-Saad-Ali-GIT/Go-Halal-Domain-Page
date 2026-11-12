@@ -1,4 +1,4 @@
-import { StoreButtons } from "./StoreButtons";
+import { StoreButtons } from "@/components/StoreButtons";
 
 export function DownloadCta() {
   return (
